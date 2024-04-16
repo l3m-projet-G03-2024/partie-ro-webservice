@@ -4,16 +4,31 @@ import l3m.cyber.planner.requests.PlannerParameter;
 import l3m.cyber.planner.responses.PlannerResult;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Planner{
+
+    private Double[][] distances;
+
+    private int k;
+
+    private  int debut;
+
+    private Partition p ;
+
+    private ArrayList<ArrayList<Integer>> tournees ;
+
+    private ArrayList<Double> longTournees;
 
     public Planner(PlannerParameter param){
         this(param.matrix(), param.k(), param.start());
     }
 
     public Planner(Double[][] distances, int k, int debut){
-        // TODO : a completer
+        this.distances = distances;
+        this.k = k ;
+        this.debut = debut;
     }
 
     public Planner(){
@@ -22,11 +37,10 @@ public class Planner{
 
 
     
-    public PlannerResult result(){
-        
-        //return new PlanningResult(tournees, longTournees);
-        return new PlannerResult(new ArrayList<ArrayList<Integer>>(), new ArrayList<Double>()); // TODO: remplacer par la ligne precedente
-
+    public PlannerResult result(){ 
+          
+        return new PlannerResult(tournees, longTournees);
+        //return new PlannerResult(new ArrayList<ArrayList<Integer>>(), new ArrayList<Double>()); // TODO: remplacer par la ligne precedente
     }
 
 
