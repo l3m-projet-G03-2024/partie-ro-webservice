@@ -1,5 +1,7 @@
 package l3m.cyber.planner.utils;
 
+import lombok.Getter;
+
 import java.util.ArrayList;
 
 public abstract class Partition {
@@ -15,6 +17,7 @@ public abstract class Partition {
     // liste des sommets
     protected ArrayList<Integer> elems;
     // partie de la partition
+    @Getter
     protected ArrayList<ArrayList<Integer>> parties;
 
     public Partition(ArrayList<Integer> elems, int k, int elemSpecial) {
@@ -52,6 +55,7 @@ public abstract class Partition {
     public ArrayList<Integer> getPartie(int i) {
         return parties.get(i);
     }
+
 
     public abstract void partitionne(Double[][] distances);
 

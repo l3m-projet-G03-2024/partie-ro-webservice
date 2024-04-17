@@ -2,6 +2,8 @@ package l3m.cyber.planner;
 
 // Aucune modification necessaire dans ce fichier
 
+import l3m.cyber.planner.utils.PartitionAlea;
+import l3m.cyber.planner.utils.PartitionKCentre;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,6 +12,7 @@ public class PlannerApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PlannerApplication.class, args);
+
 	}
 
 }
