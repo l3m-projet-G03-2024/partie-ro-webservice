@@ -11,3 +11,4 @@
 - création de la classe PartitionKCentre 
 - Implémentation de la fonction partitionne(Double[][] distances) de la classe 
 - teste de la fonction 
+### Jeudi 18/04/2024 
