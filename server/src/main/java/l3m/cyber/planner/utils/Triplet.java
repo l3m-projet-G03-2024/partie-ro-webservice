@@ -18,12 +18,7 @@ public class Triplet implements Comparable<Triplet>{
         this.c3 = poids;
     }
 
-    public int get(int i){
-        if (i == 0) {
-            return c1;
-        }
-        return c2;
-    }
+
 
     public double getPoids() {
         return this.c3;
@@ -40,6 +35,9 @@ public class Triplet implements Comparable<Triplet>{
 
     @Override
     public int compareTo(Triplet t2) {
-        return Double.compare(this.c3,t2.c3);
+        if (this.getPoids()>t2.getPoids()) {
+            return 1;
+        }
+        return -1;
     }
 }

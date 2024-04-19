@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public abstract class Partition {
 
     // nb elements à partitionner (nb sommets)
+    @Getter
     protected int nbElem;
 
     // nb parties souhaitées dans la partition (nb livreurs)
