@@ -80,12 +80,12 @@ public class Graphe implements Cloneable{
 
     // crée un graphe avec n sommets, nommés 0 à n-1 et aucune arête
     public Graphe(int n) {
-        this(Auxiliere.integerList(n));
+        this(Auxiliaire.integerList(n));
     }
 
     // crée un graphe non pondéré
     public Graphe(Double[][] poidsA,int n) {
-        this(poidsA,Auxiliere.integerList(n));
+        this(poidsA, Auxiliaire.integerList(n));
     }
 
     public void pondereAretest() {

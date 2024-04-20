@@ -26,23 +26,19 @@ class PlannerApplicationTests {
 	// Vous pouvez ajouter des tests unitaires ici si vous le souhaitez
 
 	@Test
-	void nonnullTestPlanning() {
+	void nonnullTestPlanning() throws CloneNotSupportedException {
 		Double[][] matrix = { { 0.0, 1.1 }, { 1.1, 0.0 } };
 		int k = 1;
 		int start = 0;
 		PlannerParameter param = new PlannerParameter(matrix, k, start);
 		Planner pl = new Planner(param);
+		pl.divise();
+		pl.calculeTournee();
+		pl.calculeLongTournees();
 		PlannerResult pr = pl.result();
-		assertTrue(pr.tournees() == null); // le tableau tournees doit etre non null
-		assertTrue(pr.longTournees() == null); // idem, le tableau longTournees doit etre non null
-		// for(int i=0; i<pr.tournees().size(); i++){
-		// assertTrue(pr.tournees().get(i).get(0)==start);
-		// }
-		// ajouts de tests
-		// assertTrue(pr.tournees().isEmpty()); // le tableau tournees est vide
-		// assertTrue(pr.longTournees().isEmpty()); // le tableau longTournees est vide
+		assertTrue(pr.tournees() != null); // le tableau tournees doit etre non null
+		assertTrue(pr.longTournees() != null); // idem, le tableau longTournees doit etre non null
 
-		// start = 0 ; tournees = [[0,2,..],[0,..],[0,2,2]]
 	}
 
 }

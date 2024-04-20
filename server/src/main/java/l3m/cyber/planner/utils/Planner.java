@@ -3,6 +3,7 @@ package l3m.cyber.planner.utils;
 import l3m.cyber.planner.requests.PlannerParameter;
 import l3m.cyber.planner.responses.PlannerResult;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +21,10 @@ public class Planner{
     private Partition p ;
 
     @Getter
+    @Setter
     private ArrayList<ArrayList<Integer>> tournees ;
 
+    @Getter
     private ArrayList<Double> longTournees;
 
     public Planner(PlannerParameter param){
@@ -40,10 +43,8 @@ public class Planner{
 
 
     
-    public PlannerResult result(){ 
-          
+    public PlannerResult result(){
         return new PlannerResult(tournees, longTournees);
-        //return new PlannerResult(new ArrayList<ArrayList<Integer>>(), new ArrayList<Double>()); // TODO: remplacer par la ligne precedente
     }
 
     public void divise() {
@@ -65,6 +66,33 @@ public class Planner{
             }
         }
         return sousMatrice;
+    }
+
+    public ArrayList<Integer> calculeUneTournee(ArrayList<Integer> select) throws CloneNotSupportedException {
+        Double[][] matrice1 = getSousMatrice(select);
+        Graphe graphe = new Graphe(matrice1,select);
+        return graphe.tsp(0);
+    }
+
+    public void calculeTournee() throws CloneNotSupportedException {
+
+        for (int i = 0; i < tournees.size(); i++) {
+            ArrayList<Integer> listElem = tournees.get(i);
+            ArrayList<Integer> tournee = calculeUneTournee(listElem);
+            tournees.set(i, tournee);
+        }
+    }
+    public void calculeLongTournees() {
+        longTournees = new ArrayList<Double>();
+        for (ArrayList<Integer> listElem : tournees) {
+            Double longueur = 0.0;
+            for (int j = 0; j < listElem.size() - 1; j++) {
+                longueur += distances[listElem.get(j)][listElem.get(j + 1)];
+            }
+            longueur += distances[listElem.getLast()][listElem.getFirst()];
+            longTournees.add(longueur);
+        }
+
     }
     
 }

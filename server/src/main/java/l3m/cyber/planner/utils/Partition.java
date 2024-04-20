@@ -30,7 +30,7 @@ public abstract class Partition {
     }
 
     public Partition(int n, int k, int elemSpecial) {
-        this(Auxiliere.integerList(n), k, elemSpecial);
+        this(Auxiliaire.integerList(n), k, elemSpecial);
 
     }
 

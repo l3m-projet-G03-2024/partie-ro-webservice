@@ -10,6 +10,7 @@ import l3m.cyber.planner.utils.Planner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 @SpringBootApplication
@@ -33,26 +34,25 @@ public class PlannerApplication {
 
 		PlannerParameter plannerParameter = new PlannerParameter(dist,2,0);
 		Planner planner = new Planner(plannerParameter);
+		// partitionne les livraisons entre livreurs
 		planner.divise();
+		// calcul la tournée de chaque livreur
+		planner.calculeTournee();
+		// calcul de la longueur de chaque tournée
+		planner.calculeLongTournees();
+		planner.result();
 
+		System.out.println("Tournee pour livreur 1 " + planner.getTournees().get(0));
+		System.out.println("Tournee pour livreur 2 " + planner.getTournees().get(1));
 
-		Double[][] matrice1 = planner.getSousMatrice(planner.getTournees().get(0));
-		Double[][] matrice2 = planner.getSousMatrice(planner.getTournees().get(1));
-
-		Graphe graphe1 = new Graphe(matrice1,planner.getTournees().get(0));
-		System.out.println("graphe 1 = "+graphe1.getNomSommets());
-		Graphe graphe2 = new Graphe(matrice2,planner.getTournees().get(1));
-		System.out.println("graphe 2 = "+graphe2.getNomSommets());
-
-
-
-		System.out.println("graphe livreur 1 : "+ graphe1.tsp(0));
-		System.out.println("graphe livreur 2 : "+ graphe2.tsp(0));
+		System.out.println("LongTournee du livreur 1 "+ planner.getLongTournees().getFirst());
+		System.out.println("LongTournee du livreur 2 "+ planner.getLongTournees().get(1));
 
 
 
-		System.out.println("matrice livreur 1 "+ Arrays.deepToString(planner.getSousMatrice(graphe1.getNomSommets())));
-		System.out.println("matrice livreur 2 : "+ Arrays.deepToString(planner.getSousMatrice(graphe2.getNomSommets())));
+
+
+
 
 	}
 

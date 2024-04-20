@@ -10,8 +10,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class PlannerService {
 
-    public PlannerResult getResult(PlannerParameter params){
-        Planner pl= new Planner(params);
+    public PlannerResult getResult(PlannerParameter params) throws CloneNotSupportedException {
+        Planner pl = new Planner(params);
+        pl.divise();
+        pl.calculeTournee();
+        pl.calculeLongTournees();
         return pl.result();
     }
 

@@ -2,7 +2,7 @@ package l3m.cyber.planner.utils;
 
 import java.util.ArrayList;
 
-public class Auxiliere {
+public class Auxiliaire {
 
     public final static ArrayList<Integer> integerList(int n) {
         ArrayList<Integer> list = new ArrayList<>();
