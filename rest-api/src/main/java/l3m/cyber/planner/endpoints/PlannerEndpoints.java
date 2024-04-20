@@ -17,5 +17,5 @@ public interface PlannerEndpoints {
     @ApiResponse(responseCode = "200", description = "La planification calculer par le web service")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/planif")
-    PlannerResult planif(@RequestBody PlannerParameter params) throws CloneNotSupportedException;
+    PlannerResult planif(@RequestBody PlannerParameter params);
 }

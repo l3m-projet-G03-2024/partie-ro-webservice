@@ -206,8 +206,13 @@ public class Graphe implements Cloneable{
 
 
     @Override
-    public Object clone() throws CloneNotSupportedException {
-        Graphe g = (Graphe) super.clone();
+    public Object clone()  {
+        Graphe g = null;
+        try {
+            g = (Graphe) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new RuntimeException(e);
+        }
         g.adj = new int[nbSommets][nbSommets];
         for (int i = 0; i < nbSommets; i++) {
             System.arraycopy(adj[i], 0, g.adj[i], 0, nbSommets);
@@ -270,7 +275,7 @@ public class Graphe implements Cloneable{
 
     // Graphe KruskalInverse() qui renvoie un arbre couvrant de poids minimum du graphe,
 //obtenu par l'algorithme de Kruskal, mais en retirant les arêtes qui ne sont pas dans l'arbre couvrant de poids minimum.
-    public Graphe KruskalInverse() throws CloneNotSupportedException {
+    public Graphe KruskalInverse()  {
         // prendre une copie de notre graphe
         Graphe T = (Graphe) this.clone();
         // On trie les arêtes par poids décroissant
@@ -292,7 +297,7 @@ public class Graphe implements Cloneable{
     }
 
     /*une méthode ArrayList<Integer> tsp(int debut), qui calcule et renvoie un cycle hamiltonien du graphe courant (liste de tous les sommets, dans un certain ordre, commençant par debut). */
-    public ArrayList<Integer> tsp(int debut) throws CloneNotSupportedException {
+    public ArrayList<Integer> tsp(int debut) {
         Graphe T = KruskalInverse();
         ArrayList<Integer> parcours = T.parcoursProfondeur(debut);
         ArrayList<Integer> res = new ArrayList<>();

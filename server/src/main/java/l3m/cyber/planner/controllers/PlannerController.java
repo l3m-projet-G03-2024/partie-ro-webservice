@@ -16,7 +16,9 @@ public class PlannerController implements PlannerEndpoints {
 	private final PlannerService plannerService;
 
     @Override
-    public PlannerResult planif(PlannerParameter params) throws CloneNotSupportedException {
-        return plannerService.getResult(params);
+    public PlannerResult planif(PlannerParameter params) {
+
+            return plannerService.getResult(params);
+
     }
 }

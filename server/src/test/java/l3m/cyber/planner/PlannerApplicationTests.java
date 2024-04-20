@@ -6,9 +6,11 @@ import l3m.cyber.planner.utils.Planner;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 class PlannerApplicationTests {
@@ -38,6 +40,10 @@ class PlannerApplicationTests {
 		PlannerResult pr = pl.result();
 		assertTrue(pr.tournees() != null); // le tableau tournees doit etre non null
 		assertTrue(pr.longTournees() != null); // idem, le tableau longTournees doit etre non null
+
+		assertEquals(Arrays.asList(0, 1), pr.tournees().getFirst());
+
+		assertEquals(2.2,pr.longTournees().getFirst());
 
 	}
 

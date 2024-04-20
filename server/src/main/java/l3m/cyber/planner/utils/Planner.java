@@ -68,13 +68,13 @@ public class Planner{
         return sousMatrice;
     }
 
-    public ArrayList<Integer> calculeUneTournee(ArrayList<Integer> select) throws CloneNotSupportedException {
+    public ArrayList<Integer> calculeUneTournee(ArrayList<Integer> select)  {
         Double[][] matrice1 = getSousMatrice(select);
         Graphe graphe = new Graphe(matrice1,select);
         return graphe.tsp(0);
     }
 
-    public void calculeTournee() throws CloneNotSupportedException {
+    public void calculeTournee()  {
 
         for (int i = 0; i < tournees.size(); i++) {
             ArrayList<Integer> listElem = tournees.get(i);
