@@ -8,8 +8,6 @@ public class PartitionKCentre extends Partition{
     }
 
 
-
-
     @Override
     public void partitionne(Double[][] distances){
         // tableau qui stock les sommets qui sont choisis comme casernes
@@ -43,9 +41,9 @@ public class PartitionKCentre extends Partition{
                     * on récupère l'indice de la longueur et on la cherche dans la table elems la caserne correspondante
          */
 
-        for (int i=1 ; i<k; i++) {
+        for (int i=0 ; i<k; i++) {
             int max = 0;
-            for (int j = 1; j<nbElem; j++) {
+            for (int j = 0; j<nbElem; j++) {
                 if (distanceMax[j]>distanceMax[max]) {
                     max = j;
                 }

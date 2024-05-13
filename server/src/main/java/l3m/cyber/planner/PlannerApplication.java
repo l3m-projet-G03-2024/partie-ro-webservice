@@ -32,6 +32,12 @@ public class PlannerApplication {
 		};
 
 
+		Double[][] dist1= {
+				{0.0, 2.0, 3.0},
+				{2.0,0.0, 1.0},
+				{3.0,1.0,0.0}
+		};
+
 		PlannerParameter plannerParameter = new PlannerParameter(dist,2,0);
 		Planner planner = new Planner(plannerParameter);
 		// partitionne les livraisons entre livreurs
@@ -45,8 +51,10 @@ public class PlannerApplication {
 		System.out.println("Tournee pour livreur 1 " + planner.getTournees().get(0));
 		System.out.println("Tournee pour livreur 2 " + planner.getTournees().get(1));
 
+
 		System.out.println("LongTournee du livreur 1 "+ planner.getLongTournees().getFirst());
 		System.out.println("LongTournee du livreur 2 "+ planner.getLongTournees().get(1));
+
 
 
 
