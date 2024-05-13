@@ -69,12 +69,12 @@ public class Graphe implements Cloneable{
         this.nomSommets = nomSommets;
         this.nbSommets = nomSommets.size();
         this.adj = new int[nbSommets][nbSommets];
-        for (int i = 0; i < nbSommets; i++) {
-            for (int j = 0; j < nbSommets; j++) {
-                ajouterArete(i,j);
-            }
-        }
-        pondereAretest();
+//        for (int i = 0; i < nbSommets; i++) {
+//            for (int j = 0; j < nbSommets; j++) {
+//                ajouterArete(i,j);
+//            }
+//        }
+//        pondereAretest();
 
     }
 
@@ -296,6 +296,26 @@ public class Graphe implements Cloneable{
         return T;
     }
 
+public Graphe Kruskal() {
+    //On commence par prendre un graphe T qui a le même nombre de sommets que le graphe courant, mais aucune arête. Pour l'instant, le graphe T n'a pas assez d'arêtes pour être connexe, le but va être de rajouter les bonnes arêtes pour le rendre connexe à coût minimum.
+
+    Graphe T = new Graphe(nbSommets);
+    //On trie les arêtes du graphe courant par poids croissant.
+    List<Triplet> aretes = aretesTriees(true);
+    //On crée une structure d'Union-Find pour gérer les composantes connexes
+    UnionFind uf = new UnionFind(nbSommets);
+    //Pour chaque arête dans cet ordre : on se demande si l'ajout de l'arête à T va créer un cycle; si oui, on ne l'ajoute pas et on passse à la suivante; sinon, on l'ajoute à T et on passe à la suivante.
+    for (Triplet arete : aretes) {
+        int sommet1 = arete.getC1();
+        int sommet2 = arete.getC2();
+        if (uf.find(sommet1) != uf.find(sommet2)) {
+            T.ajouterArete(sommet1, sommet2);
+            uf.union(sommet1, sommet2);
+        }
+    }
+    return T;
+}
+
     /*une méthode ArrayList<Integer> tsp(int debut), qui calcule et renvoie un cycle hamiltonien du graphe courant (liste de tous les sommets, dans un certain ordre, commençant par debut). */
     public ArrayList<Integer> tsp(int debut) {
         Graphe T = KruskalInverse();
@@ -306,6 +326,21 @@ public class Graphe implements Cloneable{
                 res.add(sommet);       // Ajouter chaque sommet une seule fois
             }
         }
+        return res;
+    }
+
+    
+    //tsp2
+    public ArrayList<Integer> tsp2(int debut) {
+        Graphe T = Kruskal();
+        ArrayList<Integer> res = new ArrayList<>();
+        ArrayList<Integer> parcours = T.parcoursProfondeur(debut);
+        for (int sommet : parcours) {
+            if (!res.contains(sommet)) {
+                res.add(nomSommets.get(sommet)); // Ajouter chaque sommet une seule fois
+            }
+        }
+
         return res;
     }
 
