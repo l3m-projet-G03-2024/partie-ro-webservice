@@ -69,6 +69,12 @@ public class Graphe implements Cloneable{
         this.nomSommets = nomSommets;
         this.nbSommets = nomSommets.size();
         this.adj = new int[nbSommets][nbSommets];
+//        for (int i = 0; i < nbSommets; i++) {
+//            for (int j = 0; j < nbSommets; j++) {
+//                ajouterArete(i,j);
+//            }
+//        }
+//        pondereAretest();
 
     }
 

@@ -29,11 +29,11 @@ public class PartitionKCentreTest {
         List<Integer> partie1 = Arrays.asList(0,1,2,3);
         List<Integer> partie2 = Arrays.asList(0,4,5,6);
 
-        assertEquals(4, partitionKCentre.getPartie(0).size());
         assertEquals(4, partitionKCentre.getPartie(1).size());
+        assertEquals(4, partitionKCentre.getPartie(0).size());
 
-        assertEquals(partie1,partitionKCentre.getPartie(0));
-        assertEquals(partie2,partitionKCentre.getPartie(1));
+        assertEquals(partie1,partitionKCentre.getPartie(1));
+        assertEquals(partie2,partitionKCentre.getPartie(0));
 
     }
 }
